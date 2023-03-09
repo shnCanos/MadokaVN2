@@ -1,0 +1,4 @@
+game/*.rpyc
+game/*.rpa
+game/.rpymc
+game/cache/
