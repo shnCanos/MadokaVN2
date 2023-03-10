@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 21: end of line expected.
+    show m_curious_maid: zoom 0.5
+                         ^
+
+Ren'Py Version: Ren'Py 8.0.3.0
+Fri Mar 10 13:25:03 2023

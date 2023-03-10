@@ -1,28 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00start.rpy", line 278, in script
-    python:
-ScriptError: could not find label 'start'.
+  File "game/script.rpy", line 24, in script
+    show image discord
+  File "game/script.rpy", line 24, in <module>
+    show image discord
+NameError: name 'discord' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "/usr/share/renpy/renpy/bootstrap.py", line 277, in bootstrap
-    renpy.main.main()
-  File "/usr/share/renpy/renpy/main.py", line 660, in main
-    run(restart)
-  File "/usr/share/renpy/renpy/main.py", line 146, in run
-    renpy.execution.run_context(True)
-  File "/usr/share/renpy/renpy/execution.py", line 938, in run_context
-    context.run()
-  File "renpy/common/00start.rpy", line 278, in script
-    python:
-  File "/usr/share/renpy/renpy/script.py", line 927, in lookup
-    raise ScriptError("could not find label '%s'." % str(original))
-ScriptError: could not find label 'start'.
+  File "game/script.rpy", line 24, in script
+    show image discord
+  File "/usr/share/renpy/renpy/ast.py", line 1408, in execute
+    show_imspec(self.imspec, atl=getattr(self, "atl", None))
+  File "/usr/share/renpy/renpy/ast.py", line 1364, in show_imspec
+    expression = renpy.python.py_eval(expression)
+  File "/usr/share/renpy/renpy/python.py", line 1092, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "/usr/share/renpy/renpy/python.py", line 1085, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/script.rpy", line 24, in <module>
+    show image discord
+NameError: name 'discord' is not defined
 
 Linux-6.2.0-63.fc38.x86_64-x86_64-with-glibc2.37 x86_64
 Ren'Py 8.0.3.0
 MadokaVN2 1.0
-Thu Mar  9 20:00:54 2023
+Fri Mar 10 14:12:35 2023
