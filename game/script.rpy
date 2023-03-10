@@ -44,6 +44,14 @@ label start:
     p "Yes, but I'm awake because I need to go to school..."
 
     e "..."
+    e "I shouldn't have watched Okayu for 5 hours"
+    e """
+    Is this the real life?
+    Is this just fantasy?
+
+    Is Madoka my wife?
+    I'm losing my sanity...
+    """
 
     n "Your vision starts getting foggy, and you faint"
 
