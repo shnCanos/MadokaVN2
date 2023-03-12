@@ -6,11 +6,24 @@
     def message_beep_2(event, interact=True, **kwargs):
         if interact and event == "show_done":
             renpy.sound.play("audio/snd_dialogue_2.wav")
+    
+    def make_discord_character(name, icon, instant = False):
+        char = Character(name, kind=nvl, who_color="#fff", who_prefix=f"{{size=40}}{{image=pfp {icon}.webp}} {{font=DejaVuSans.ttf}}", what_prefix="{color=#ddd}{font=DejaVuSans.ttf}")
+        if instant:
+            char.what_suffix = "{fast}"
+        return char
+
+### Characters
+# Discord
+define discord_n = Character("", window_background="gui/nvl.png")
+define discord_e = make_discord_character("Egas KyUwUn", "doggu", False)
+define discord_p = make_discord_character("Peidro", "soulspark", True)
+define discord_v = make_discord_character("{size=16}BandanaDeeIsTheGreatestOfAllTime", "shnawblle", True)
 
 define m = Character("Madoka Higuchi", callback=message_beep)
 define e = Character("Egas KyUwUn", who_color="#ff7700", callback=message_beep_2)
-define n = Character("")
 define p = Character("Peidro", what_suffix="{fast}")
+define n = Character("")
 
 ### Audios
 define audio.discord_ping = "audio/discord.mp3"
@@ -19,6 +32,7 @@ define audio.discord_ping = "audio/discord.mp3"
 # Bg
 define fade_black = { "master" : Fade(1.0, 0.0, 0.0) }
 image bg black = Solid("#000")
+image solid_black = Solid("#000")
 
 define fade_white = { "master" : Fade(1.5, 0.0, 0.0, color="#fff") }
 image bg white = Solid("#fff")
@@ -35,48 +49,135 @@ default good_ending = False
 
 label start:
     show bg discord
-    n "It's 4am. You have just finished your latest madoka drawing, and sent it to your friends through discord"
-    play sound discord_ping
-    p "...4 am?"
-    play sound discord_ping
-    p "Again?"
-    play sound discord_ping
-    p "...really?"
-    play sound discord_ping
-    p "And for what? To draw madoka drawings?"
-    play sound discord_ping
-    p "What the heck man"
-    play sound discord_ping
-    p "You'll have to wake up at 7 tomorrow..."
-    play sound discord_ping
-    p "I'm disappointed :pensive:"
+    show top discord zorder 10 onlayer screens
+    with Fade(1.5, 0.5, 1.5)
+    $ renpy.pause(1.0, True)
+    
+    show text "It's 5am. You have just finished your latest madoka drawing, and sent it to your friends through discord." at truecenter
+    with Dissolve(1.0)
+    
+    with Pause(1000000)
+    
+    hide text
+    with Dissolve(1.0)
 
+    show madoka sketch:
+        xcenter 0.3
+        ycenter 0.5
+        zoom 1.0
+    
+    # $ gui.nvl_height = 300
+    # $ style.rebuild()
+
+    nvl_narrator "\n{fast}{nw}"
+    nvl_narrator "\n{fast}{nw}"
+    nvl_narrator "\n{fast}{nw}"
+    nvl_narrator "\n{fast}{nw}"
+    nvl_narrator "\n{fast}{nw}"
+    nvl_narrator "\n{fast}{nw}"
+    nvl_narrator "\n{fast}{nw}"
+    nvl_narrator "\n{fast}{nw}"
+    nvl_narrator "\n{fast}{nw}"
+    nvl_narrator "\n{fast}{nw}"
     voice "<from 0 to 0.4>audio/keyboard_typing.wav"
-    e "You're awake too"
+    discord_e "sketch going"
+    with Pause(1000000)
+
+    show madoka sketch zorder 0:
+        ycenter 0.4
+    play sound discord_ping
+    discord_p "...5 am?"
+
+    show madoka sketch:
+        ycenter 0.3
+    play sound discord_ping
+    discord_p "again?"
+    
+    show madoka sketch:
+        ycenter 0.2
+    play sound discord_ping
+    discord_p "...really?"
+
+    show madoka sketch:
+        ycenter 0.1
+    play sound discord_ping
+    discord_p "and for what? to draw madoka drawings?"
+    
+    show madoka sketch:
+        ycenter 0.0
+    play sound discord_ping
+    discord_p "what the heck man"
+    
+    show madoka sketch:
+        ycenter -0.1
+    play sound discord_ping
+    discord_p "you'll have to wake up at 7 tomorrow..."
+
+    show madoka sketch:
+        ycenter -0.2
+    play sound discord_ping
+    discord_p "I'm disappointed :pensive:"
+
+
+    show madoka sketch:
+        ycenter -0.3
+    voice "<from 0 to 0.4>audio/keyboard_typing.wav"
+    discord_e "you're awake too"
 
     play sound discord_ping
-    p "Yes, but I'm awake because I need to go to school..."
+    discord_p "yes, but I'm awake because I need to go to school..."
 
     voice "<from 0 to 0.2>audio/keyboard_typing.wav"
-    e "..."
+    discord_e "..."
+
     voice "<from 0 to 1>audio/keyboard_typing.wav"
-    e "I shouldn't have watched Okayu for 5 hours"
+    discord_e "i shouldn't have watched Okayu for 5 hours"
+
+    play sound discord_ping
+    discord_v "welp"
+    
+    play sound discord_ping
+    discord_v "wanna play owowatch then"
+
+    play sound discord_ping
+    discord_p "no way you woke up just for this"
+ 
+    play sound discord_ping
+    discord_v "don't doubt me"
+    
+    voice "<from 0 to 1>audio/keyboard_typing.wav"
+    discord_e "bruh... what even is overwatch"
+    
+    voice "<from 0 to 1>audio/keyboard_typing.wav"
+    discord_e "idk anymore"
+
+    show solid_black onlayer screens zorder 3:
+        alpha 0.0
+        ease 1.0 alpha 0.3
+
     voice "<from 1 to 2.5>audio/keyboard_typing.wav"
-    e """{cps=30}
-    Is this the real life?
+    discord_e """{cps=30}Is this the real life?
     Is this just fantasy?
     """
+
+    show solid_black onlayer screens zorder 3:
+        ease 1.0 alpha 0.7
     voice "<from 1 to 2.5>audio/keyboard_typing.wav"
-    e """{cps=30}
-    Is Madoka my wife?
+    discord_e """{cps=30}Is Madoka my wife?
     I'm losing my sanity...
     """
+    hide top discord onlayer screens
+    hide madoka
+    with None
 
     play sound snd_splash
     with fade_black
     show bg black
-    n "Your vision starts getting foggy..."
+
+    show solid_black onlayer screens zorder 3:
+        linear 1.0 alpha 0.0
     
+    discord_n "{cps=20}Your vision {cps=10}gets {cps=5}foggy..."
     
     jump wakeywakey
 
@@ -85,7 +186,7 @@ label wakeywakey:
     show bg cafe sky
     show madoka bunny stepped at center:
         zoom 0.35 # Sad 420
-    with Fade(0.0, 0.0, 1.0)
+    with Fade(0.0, 0.0, 2.0)
     m "What are you doing, sleeping there?"
     m "...Disgusting"
     
@@ -109,7 +210,7 @@ label wakeywakey:
         zoom 1.2
     m "Like why would I know. Pftt."
 
-    m "But since it is your birthday, we can go to the café I work on. On me."
+    m "But since it is your birthday, we can go to the café I work on. Come, it's on me."
 
     hide cafeoutside
     jump cafe
@@ -141,7 +242,7 @@ label cafe:
     m "Can I see it?"
 
     menu:
-        "What say you?"
+        "What say you?\nShow Madoka your drawings?"
         "I'll show you":
             show phone safe at right:
                 ycenter 1.5
@@ -149,11 +250,14 @@ label cafe:
             e "Ok sure... I'll let you see one of them"
             
             show phone scroll
-            m "Huh. Not bad. You actually are good at this-"
+            m "Huh. Not bad. {w=0.5}You actually are good at this-{nw}"
             show madoka maid disgust
+            stop music
+            extend ""
+            
 
             n "She scrolled too much"
-            e "{i}shoot{/i} she scrolled too much"
+            e "shit. she scrolled too much"
             m "I clearly have scrolled too much. {w}Disgusting."
 
             call ending("Saitei")
@@ -189,9 +293,12 @@ label cafe:
             m "..."
 
             show madoka maid disgust
+            stop music
             m "{font=DejaVuSans.ttf}Did you just say \"more\"" # 漏れ
-            e "oh.{w} OH. {w}{size=-10}I guess I did."
+            e "oh.{w} OH. {w}{size=-10}Guess I'll die."
 
+            show madoka maid disgust:
+                easein_back 0.2 zoom 0.8
             m "{i}Disgusting."
 
             call ending("More Bad")
@@ -208,6 +315,7 @@ label cafe:
 
             hide madoka
             with { "master": Dissolve(1.5) }
+            stop music fadeout 1.5
             e "Wait it really is a dream?!?! {p=0.5}{nw}"
             with { "master": vpunch }
             e "Wait it really is a dream?!?! {fast}{cps=20}noooo{size=+1}OOO{size=+4}OOO{size=+4}OOO{size=+4}OOO{size=+4}OOOO{size=+4}OOOO{size=+4}OOOO"
@@ -253,6 +361,7 @@ label cafe:
                     show madoka maid disgust:
                         ycenter 0.6
                         zoom 0.7
+                    stop music
                     m "That sounds kinda basic tbh."
 
                     e "Wha"
@@ -269,7 +378,7 @@ label cafe:
 
                     m "Wtf does that have to do with Japan"
     
-                    e "{size=+66}ME LIKE{w=0.5} COOKIES !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+                    e "{size=+66}ME LIKE{w=0.5} COOKIES !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
                     m "Are cookies not a thing in your culture?"
                     
@@ -278,8 +387,10 @@ label cafe:
                     show madoka maid disgust:
                         ycenter 0.6
                         zoom 0.7
+                    stop music
                     
-                    m "Then why didn't you just eat the ones in your country? Did you travel to Japan just for cookies?"
+                    m "Then why didn't you just eat the ones in your country?"
+                    m "Did you travel to Japan just for cookies?"
 
                     e "...{w}...{w}I JUST LIKE COOKIES GOD DAMN IT!!!"
                     n "Before you knew it, you'd ran away from her..."
