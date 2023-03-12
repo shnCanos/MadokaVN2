@@ -236,6 +236,9 @@ label cafe:
                     m "Wait U2 is a Japanese idol group now?"
 
                     "this conversation is just nonsense"
+
+                    # I'm sorry, I cannot continue this one ><
+                    call ending("Beaten in your own speaciality")
                 "Anime":
                     e "{i}Actually,{/i} I'm a big fan of anime"
                     
@@ -257,6 +260,7 @@ label cafe:
 
                     m "Basically, yeah"
                     with { "master": vpunch }
+                    # Oh so this is how you did it you little twerp
                     e "{cps=30}noooo{size=+1}OOO{size=+4}OOO{size=+4}OOO{size=+4}OOO{size=+4}OOOO{size=+4}OOOO{size=+4}OOOO{size=+4}OOOO{size=+6}OOOO{size=+6}OOOO"
 
                     call ending("Basic")
@@ -266,24 +270,22 @@ label cafe:
                     m "Wtf does that have to do with Japan"
     
                     e "{size=+66}ME LIKE{w=0.5} COOKIES !!!!!!!!!!!!!!!!!!!!!!!!!!!"
-    
-    
-menu:
-    m "What say you?"
-    "Bandana dee is the greatest":
-        jump ba
-    "Nothing":
-        jump beh
 
-label ba:
-    show madoka maid floor at left:
-        zoom 0.69
-    m "nice"
-    return
+                    m "Are cookies not a thing in your culture?"
+                    
+                    e "Well they are but..."
 
-label beh:
-    m "You son of a"
-    return
+                    show madoka maid disgust:
+                        ycenter 0.6
+                        zoom 0.7
+                    
+                    m "Then why didn't you just eat the ones in your country? Did you travel to Japan just for cookies?"
+
+                    e "...{w}...{w}I JUST LIKE COOKIES GOD DAMN IT!!!"
+                    n "Before you knew it, you'd ran away from her..."
+                    n "And now she hates you"
+
+                    call ending("Cookies > Madoka")
 
 define ender = Character("", advance=False)
 
