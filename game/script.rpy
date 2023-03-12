@@ -1,5 +1,14 @@
-﻿define m = Character("Madoka Higuchi")
-define e = Character("Egas KyUwUn")
+﻿init python:
+    def message_beep(event, interact=True, **kwargs):
+        if interact and event == "show_done":
+            renpy.sound.play("audio/snd_dialogue_1.wav")
+
+    def message_beep_2(event, interact=True, **kwargs):
+        if interact and event == "show_done":
+            renpy.sound.play("audio/snd_dialogue_2.wav")
+
+define m = Character("Madoka Higuchi", callback=message_beep)
+define e = Character("Egas KyUwUn", who_color="#ff7700", callback=message_beep_2)
 define n = Character("")
 define p = Character("Peidro", what_suffix="{fast}")
 
@@ -11,7 +20,7 @@ define audio.discord_ping = "audio/discord.mp3"
 define fade_black = { "master" : Fade(1.0, 0.0, 0.0) }
 image bg black = Solid("#000")
 
-define fade_white = { "master" : Fade(1.0, 0.0, 0.0, color="#fff") }
+define fade_white = { "master" : Fade(1.5, 0.0, 0.0, color="#fff") }
 image bg white = Solid("#fff")
 
 # Madoka
@@ -23,7 +32,6 @@ image phone scroll = Movie(play="phone_scroll.webm", side_mask=True, loop=False,
 
 # Flags
 default good_ending = False
-define ending = ""
 
 label start:
     show bg discord
@@ -64,6 +72,7 @@ label start:
     I'm losing my sanity...
     """
 
+    play sound snd_splash
     with fade_black
     show bg black
     n "Your vision starts getting foggy..."
@@ -72,6 +81,7 @@ label start:
     jump wakeywakey
 
 label wakeywakey:
+    play music "audio/hanging_with_the_boys.mp3"
     show bg cafe sky
     show madoka bunny stepped at center:
         zoom 0.35 # Sad 420
@@ -83,7 +93,7 @@ label wakeywakey:
     show bg cafe outside
     show madoka bunny flustered at center:
         zoom 1.2
-    with dissolve
+    with { "master" : Dissolve(1.5) }
     m "You know me? Ew."
     m "At least pretend we have never met"
 
@@ -105,6 +115,7 @@ label wakeywakey:
     jump cafe
 
 label cafe:
+    play music "audio/youkoso_toroimehe.mp3"
     show bg cafe inside # onlayer overlay 
 
     show madoka maid curious at center:
@@ -144,18 +155,117 @@ label cafe:
             n "She scrolled too much"
             e "{i}shoot{/i} she scrolled too much"
             m "I clearly have scrolled too much. {w}Disgusting."
-            with fade_white
-            show bg white
-            hide madoka
-            hide phone
 
-            n "Your mind goes blank..."
-
-            $ ending = "Saitei"
-            jump ending
+            call ending("Saitei")
 
         "ononono let's not":
             e "We... we better not."
+
+            m "Mmm. Sure."
+    
+    m "Why are you in Japan tho? You don't look like you belong here."
+    e "Wow, that sounded kinda racist tbh"
+    
+    show madoka maid mad:
+        ycenter 0.7
+        zoom 0.9
+    m "What no I did not mean that"
+    
+    show madoka maid curious at center:
+        ycenter 0.6
+        zoom 0.7
+    menu:
+        m "But really though. Why are you here?"
+        "To practice Japanese":
+            e "I'm actually farming some Japanese XP"
+            e "{s}I'm actually farming some Japanese XP{/s}{fast}\nI mean, I'm practicing my Japanese!"
+    
+            m "Chotto matte... You speak Japanese?"
+            e "{font=DejaVuSans.ttf}hai hai hai (insert some actual Japanese here Idk)" # ええ、俺は日本語を話すよ！え、驚いた？
+            p "{font=DejaVuSans.ttf}sumimasen sumimasen! ofutari wa nihonjin desuka?"
+            m "{font=DejaVuSans.ttf}('ºΔº) * shakes head *{fast}"
+            e "{font=DejaVuSans.ttf}more, 1 nen ka 2 nenkan nihongo o kanari benkyōshitekita n da." # 漏れ、1年か2年間日本語をかなり勉強してきたんだ。
+
+            m "..."
+
+            show madoka maid disgust
+            m "{font=DejaVuSans.ttf}Did you just say \"more\"" # 漏れ
+            e "oh.{w} OH. {w}{size=-10}I guess I did."
+
+            m "{i}Disgusting."
+
+            call ending("More Bad")
+        "This a dream":
+            e "tbh this is probably a dream, so I guess there is no logic to it really"
+            m "... A dream? Why do you think this is a dream?"
+            
+            e "Because Madoka Higuchi becoming real is my dream!!!!"
+            show madoka maid blush:
+                ycenter 0.75
+                zoom 0.9
+            m "-!!!"
+            m "Of course it is a dream!! And you should-{w}\nYou should wake up right now! {size=-10}... Baka."
+
+            hide madoka
+            with { "master": Dissolve(1.5) }
+            e "Wait it really is a dream?!?! {p=0.5}{nw}"
+            with { "master": vpunch }
+            e "Wait it really is a dream?!?! {fast}{cps=20}noooo{size=+1}OOO{size=+4}OOO{size=+4}OOO{size=+4}OOO{size=+4}OOOO{size=+4}OOOO{size=+4}OOOO"
+
+            call ending("Snap Back to Reality")
+        "Idk":
+            e "Honestly... I'm not really sure."
+            show madoka maid mad:
+                ycenter 0.7
+                zoom 0.9
+            m "What"
+            m "Are you sure you weren't knocking yourself out with drinks"
+            e "N-No I'd never do that!!"
+
+            e "But now that you mention it, I do like Japan a lot.\nEspecially your culture!"
+
+            show madoka maid curious at center:
+                ycenter 0.6
+                zoom 0.7
+            menu:
+                m "Hmmm? What about your culture that you like then?"
+                "Idols and stuff":
+                    e "something something I like idols"
+                    e "AND I LIKE U2!!!"
+
+                    m "Wait U2 is a Japanese idol group now?"
+
+                    "this conversation is just nonsense"
+                "Anime":
+                    e "{i}Actually,{/i} I'm a big fan of anime"
+                    
+                    show madoka maid mad:
+                        ycenter 0.7
+                        zoom 0.9
+                    m "... So you're a weeb?"
+                    
+                    e "Well..."
+
+                    m "I mean, a foreigner in Japan, because they really like anime..."
+                    show madoka maid disgust:
+                        ycenter 0.6
+                        zoom 0.7
+                    m "That sounds kinda basic tbh."
+
+                    e "Wha"
+                    e "I just got called \"basic\" by Madoka Higuchi???"
+
+                    m "Basically, yeah"
+                    with { "master": vpunch }
+                    e "{cps=30}noooo{size=+1}OOO{size=+4}OOO{size=+4}OOO{size=+4}OOO{size=+4}OOOO{size=+4}OOOO{size=+4}OOOO{size=+4}OOOO{size=+6}OOOO{size=+6}OOOO"
+
+                    call ending("Basic")
+                "Cookies":
+                    e "Me like cookies!!!!"
+
+                    m "Wtf does that have to do with Japan"
+    
+                    e "{size=+66}ME LIKE{w=0.5} COOKIES !!!!!!!!!!!!!!!!!!!!!!!!!!!"
     
     
 menu:
@@ -177,6 +287,16 @@ label beh:
 
 define ender = Character("", advance=False)
 
-label ending:
-    n "{cps=20}[ending] Ending.{w}{cps=60}\nGo back a few options to try again."
-    ender "[ending] Ending.\nGo back a few options to try again {size=-10} (scroll up){fast}"
+label ending(ending=""):
+    stop music fadeout 1.5
+    play sound snd_vaporized
+    with fade_white
+    show bg white
+    hide madoka
+    hide phone
+
+    n "{cps=20}Your mind goes blank..."
+
+    play sound snd_break1
+    n "{cps=20}[ending] Ending.{w}{cps=60}\nGo back a few options to try again..."
+    ender "[ending] Ending.\nGo back a few options to try again... {size=-10}(scroll up){fast}"

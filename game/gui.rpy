@@ -26,11 +26,11 @@ init python:
 define gui.accent_color = '#cc0066'
 
 ## The color used for a text button when it is neither selected nor hovered.
-define gui.idle_color = '#aaaaaa'
+define gui.idle_color = '#545454'
 
 ## The small color is used for small text, which needs to be brighter/darker to
 ## achieve the same effect.
-define gui.idle_small_color = '#888888'
+define gui.idle_small_color = '#5d5d5d'
 
 ## The color that is used for buttons and bars that are hovered.
 define gui.hover_color = '#cc0066'
@@ -48,29 +48,29 @@ define gui.muted_color = '#e066a3'
 define gui.hover_muted_color = '#ea99c1'
 
 ## The colors used for dialogue and menu choice text.
-define gui.text_color = '#c9c9c9'
-define gui.interface_text_color = '#c9c9c9'
+define gui.text_color = '#777777'
+define gui.interface_text_color = '#5b5b5b'
 
 
 ## Fonts and Font Sizes ########################################################
 
 ## The font used for in-game text.
-define gui.text_font = "DejaVuSans.ttf"
+define gui.text_font = "gui/Bohemian Typewriter.ttf"
 
 ## The font used for character names.
-define gui.name_text_font = "DejaVuSans.ttf"
+define gui.name_text_font = "gui/Bohemian Typewriter.ttf"
 
 ## The font used for out-of-game text.
-define gui.interface_text_font = "DejaVuSans.ttf"
+define gui.interface_text_font = "gui/Bohemian Typewriter.ttf"
 
 ## The size of normal dialogue text.
-define gui.text_size = 33
+define gui.text_size = 36
 
 ## The size of character names.
-define gui.name_text_size = 45
+define gui.name_text_size = 48
 
 ## The size of text in the game's user interface.
-define gui.interface_text_size = 33
+define gui.interface_text_size = 36
 
 ## The size of labels in the game's user interface.
 define gui.label_text_size = 36
@@ -105,7 +105,7 @@ define gui.textbox_yalign = 1.0
 ## The placement of the speaking character's name, relative to the textbox.
 ## These can be a whole number of pixels from the left or top, or 0.5 to center.
 define gui.name_xpos = 360
-define gui.name_ypos = 0
+define gui.name_ypos = 10
 
 ## The horizontal alignment of the character's name. This can be 0.0 for left-
 ## aligned, 0.5 for centered, and 1.0 for right-aligned.
@@ -209,7 +209,7 @@ define gui.choice_button_borders = Borders(150, 8, 150, 8)
 define gui.choice_button_text_font = gui.text_font
 define gui.choice_button_text_size = gui.text_size
 define gui.choice_button_text_xalign = 0.5
-define gui.choice_button_text_idle_color = "#cccccc"
+define gui.choice_button_text_idle_color = "#9a9a9a"
 define gui.choice_button_text_hover_color = "#ffffff"
 define gui.choice_button_text_insensitive_color = "#444444"
 
