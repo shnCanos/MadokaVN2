@@ -257,7 +257,7 @@ label cafe:
             
 
             n "She scrolled too much"
-            e "shit. she scrolled too much"
+            e "oh no. she scrolled too much"
             m "I clearly have scrolled too much. {w}Disgusting."
 
             call ending("Saitei")
@@ -267,7 +267,7 @@ label cafe:
 
             m "Mmm. Sure."
     
-    m "Why are you in Japan tho? You don't look like you belong here."
+    m "Why are you in Japan tho? You clearly don't belong here."
     e "Wow, that sounded kinda racist tbh"
     
     show madoka maid mad:
@@ -338,15 +338,25 @@ label cafe:
             menu:
                 m "Hmmm? What about your culture that you like then?"
                 "Idols and stuff":
-                    e "something something I like idols"
-                    e "AND I LIKE U2!!!"
+                    e "I really like idols."
+                    e "Ahem- one idol, actually."
 
-                    m "Wait U2 is a Japanese idol group now?"
+                    m "Mmm? That's interesting."
+                    m "You do know that... I am a part of an idol group?"
+                    e "O-Of course I do!!"
+                    e "My favorite thing about Japan{w=0.5} {b}IS Madoka Higuchi!!!{/b}"
 
-                    "this conversation is just nonsense"
+                    show madoka maid blush:
+                        ycenter 0.75
+                        zoom 0.9
+                    m "-!!!"
 
-                    # I'm sorry, I cannot continue this one ><
-                    call ending("Beaten in your own speaciality")
+                    m "That's really weird!!{w=0.5}{nw}"
+                    extend " But also... kinda cute."
+                    e "????"
+
+                    # I'm not sure about this ending yet either
+                    call ending("Weird")
                 "Anime":
                     e "{i}Actually,{/i} I'm a big fan of anime"
                     
