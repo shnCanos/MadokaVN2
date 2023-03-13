@@ -284,7 +284,7 @@ label cafe:
             e "I'm actually farming some Japanese XP"
             e "{s}I'm actually farming some Japanese XP{/s}{fast}\nI mean, I'm practicing my Japanese!"
     
-            m "Chotto matte... You speak Japanese?"
+            m "Wait a chotto... You speak Japanese?"
             e "{font=DejaVuSans.ttf}hai hai hai (insert some actual Japanese here Idk)" # ええ、俺は日本語を話すよ！え、驚いた？
             p "{font=DejaVuSans.ttf}sumimasen sumimasen! ofutari wa nihonjin desuka?"
             m "{font=DejaVuSans.ttf}('ºΔº) * shakes head *{fast}"
