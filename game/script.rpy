@@ -23,7 +23,9 @@ define discord_v = make_discord_character("{size=16}BandanaDeeIsTheGreatestOfAll
 define m = Character("Madoka Higuchi", callback=message_beep)
 define e = Character("Egas KyUwUn", who_color="#ff7700", callback=message_beep_2)
 define p = Character("Peidro", what_suffix="{fast}")
-define n = Character("")
+define narrator = Character("")
+
+define ending_narrator = Character("", kind=nvl, what_prefix="{color=#fff}")
 
 ### Audios
 define audio.discord_ping = "audio/discord.mp3"
@@ -36,6 +38,7 @@ image solid_black = Solid("#000")
 
 define fade_white = { "master" : Fade(1.5, 0.0, 0.0, color="#fff") }
 image bg white = Solid("#fff")
+image solid_white = Solid("#fff")
 
 # Madoka
 image madoka maid curious = "MadokaHiguchiMaid(UwU might be needed).png"
@@ -178,6 +181,7 @@ label start:
         linear 1.0 alpha 0.0
     
     discord_n "{cps=20}Your vision {cps=10}gets {cps=5}foggy..."
+    nvl clear
     
     jump wakeywakey
 
@@ -256,7 +260,7 @@ label cafe:
             extend ""
             
 
-            n "She scrolled too much"
+            "She scrolled too much"
             e "oh no. she scrolled too much"
             m "I clearly have scrolled too much. {w}Disgusting."
 
@@ -309,7 +313,7 @@ label cafe:
             e "Because Madoka Higuchi becoming real is my dream!!!!"
             show madoka maid blush:
                 ycenter 0.75
-                zoom 0.9
+                zoom 1
             m "-!!!"
             m "Of course it is a dream!! And you should-{w}\nYou should wake up right now! {size=-10}... Baka."
 
@@ -330,85 +334,168 @@ label cafe:
             m "Are you sure you weren't knocking yourself out with drinks"
             e "N-No I'd never do that!!"
 
-            e "But now that you mention it, I do like Japan a lot.\nEspecially your culture!"
+    e "But now that you mention it, I do like Japan a lot.\nEspecially your culture!"
 
-            show madoka maid curious at center:
+    show madoka maid curious at center:
+        ycenter 0.6
+        zoom 0.7
+    menu:
+        m "Hmmm? What about your culture that you like then?"
+        "Idols and stuff":
+            e "I really like idols."
+            e "Ahem- one idol, actually."
+
+            m "Mmm? That's interesting."
+            m "You do know that... I am a part of an idol group?"
+            e "O-Of course I do!!"
+            e "My favorite thing about Japan{w=0.5} {b}IS Madoka Higuchi!!!{/b}"
+
+            show madoka maid blush:
+                ycenter 0.75
+                zoom 1
+            m "-!!!"
+
+            m "That's really weird!!{w=0.5}{nw}"
+            extend " But also... kinda cute."
+            e "????"
+
+            # I'm not sure about this ending yet either
+            call ending("Weird")
+        "Anime":
+            e "{i}Actually,{/i} I'm a big fan of anime"
+            
+            show madoka maid mad:
+                ycenter 0.7
+                zoom 0.9
+            m "... So you're a weeb?"
+            
+            e "Well..."
+
+            m "I mean, a foreigner in Japan, because they really like anime..."
+            show madoka maid disgust:
                 ycenter 0.6
                 zoom 0.7
-            menu:
-                m "Hmmm? What about your culture that you like then?"
-                "Idols and stuff":
-                    e "I really like idols."
-                    e "Ahem- one idol, actually."
+            stop music
+            m "That sounds kinda basic tbh."
 
-                    m "Mmm? That's interesting."
-                    m "You do know that... I am a part of an idol group?"
-                    e "O-Of course I do!!"
-                    e "My favorite thing about Japan{w=0.5} {b}IS Madoka Higuchi!!!{/b}"
+            e "Wha"
+            e "I just got called \"basic\" by Madoka Higuchi???"
 
-                    show madoka maid blush:
-                        ycenter 0.75
-                        zoom 0.9
-                    m "-!!!"
+            m "Basically, yeah"
+            with { "master": vpunch }
+            # Oh so this is how you did it you little twerp
+            e "{cps=30}noooo{size=+1}OOO{size=+4}OOO{size=+4}OOO{size=+4}OOO{size=+4}OOOO{size=+4}OOOO{size=+4}OOOO{size=+4}OOOO{size=+6}OOOO{size=+6}OOOO"
 
-                    m "That's really weird!!{w=0.5}{nw}"
-                    extend " But also... kinda cute."
-                    e "????"
+            call ending("Basic")
+        "Cookies":
+            e "Me like cookies!!!!"
 
-                    # I'm not sure about this ending yet either
-                    call ending("Weird")
-                "Anime":
-                    e "{i}Actually,{/i} I'm a big fan of anime"
-                    
-                    show madoka maid mad:
-                        ycenter 0.7
-                        zoom 0.9
-                    m "... So you're a weeb?"
-                    
-                    e "Well..."
+            m "Wtf does that have to do with Japan"
 
-                    m "I mean, a foreigner in Japan, because they really like anime..."
-                    show madoka maid disgust:
-                        ycenter 0.6
-                        zoom 0.7
-                    stop music
-                    m "That sounds kinda basic tbh."
+            e "{size=+66}ME LIKE{w=0.5} COOKIES !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
-                    e "Wha"
-                    e "I just got called \"basic\" by Madoka Higuchi???"
+            m "Are cookies not a thing in your culture?"
+            
+            e "Well they are but..."
 
-                    m "Basically, yeah"
-                    with { "master": vpunch }
-                    # Oh so this is how you did it you little twerp
-                    e "{cps=30}noooo{size=+1}OOO{size=+4}OOO{size=+4}OOO{size=+4}OOO{size=+4}OOOO{size=+4}OOOO{size=+4}OOOO{size=+4}OOOO{size=+6}OOOO{size=+6}OOOO"
+            show madoka maid disgust:
+                ycenter 0.6
+                zoom 0.7
+            stop music
+            
+            m "Then why didn't you just eat the ones in your country?"
+            m "Did you travel to Japan just for cookies?"
 
-                    call ending("Basic")
-                "Cookies":
-                    e "Me like cookies!!!!"
+            e "...{w}...{w}I JUST LIKE COOKIES GOD DAMN IT!!!"
+            "Before you knew it, you'd ran away from her..."
+            "And now she hates you"
 
-                    m "Wtf does that have to do with Japan"
-    
-                    e "{size=+66}ME LIKE{w=0.5} COOKIES !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+            call ending("Cookies > Madoka")
+        "J-Pop":
+            e "I actually like J-Pop songs a lot."
+            m "mmm, J-Pop?"
+            
+            e "Yea, like E ve,{w=0.5} and Kenshi Yonezu,{w=0.5} and Zutomayo, and-{w=0.5}{nw}"
 
-                    m "Are cookies not a thing in your culture?"
-                    
-                    e "Well they are but..."
+            show madoka maid mad:
+                ycenter 0.7
+                zoom 0.9
+            m "Mister,{w=0.5} I {i}know{/i} what J-Pop is."
 
-                    show madoka maid disgust:
-                        ycenter 0.6
-                        zoom 0.7
-                    stop music
-                    
-                    m "Then why didn't you just eat the ones in your country?"
-                    m "Did you travel to Japan just for cookies?"
+            show madoka maid blush:
+                ycenter 0.75
+                zoom 1
+            m "But ngl, you have {w=0.5}very {b}based{/b} taste for that"
 
-                    e "...{w}...{w}I JUST LIKE COOKIES GOD DAMN IT!!!"
-                    n "Before you knew it, you'd ran away from her..."
-                    n "And now she hates you"
+            e "-!! Right!?! J-Pop is the best!!!"
+            show madoka maid happy:
+                ycenter 0.7
+                zoom 0.7
 
-                    call ending("Cookies > Madoka")
+            m "...{w=0.5}Which one is your favorite artist though?"
 
-define ender = Character("", advance=False)
+            e "T-That's a tough question...{w=0.5} maybe..."
+            
+            show madoka maid happy:
+                easein_back 0.3 zoom 0.75
+            m "Eve is a great choice."
+
+            
+            show madoka maid happy:
+                easeout 0.3 zoom 0.7
+            e "Ohh yes, definitely!"
+            e "Like, have you listened to Raison d'être? {w=0.5}\nThat song is{w=0.5}{nw}"
+            with { "master": vpunch }
+            extend " {b}FIRE{/b}{fast} wtf!?"
+
+            m "So true... {w=0.5}Eve's voice always sounds so amazing~"
+            e "fr fr ong fr fr no cap"
+            m "Yeah, and what do you think about ..."
+
+            stop music fadeout 1.5
+            with Fade(1.5, 0.5, 1.0)
+            "You and Madoka kept talking for a long time."
+            "It was a long, joyful chat."
+
+            e "phew, that was so much fun! I really enjoyed talking to you, Madoka Higuchi!!"
+            m "yeah, I feel the same..."
+
+            m "I hope you enjoyed your birthday."
+            
+            play music "audio/early_riser.mp3" fadein 4.0
+            discord_n "{w=3.0}{nw}"
+
+            show madoka maid blush:
+                ycenter 0.75
+                zoom 1
+            with Dissolve(0.5)
+            m "Oh.{w=0.5} It seems like it's time for you to wake up."
+            with Pause(1.0)
+            m "But don't you worry about it..."
+            
+            show madoka maid happy:
+                ycenter 0.7
+                zoom 0.7
+            with Dissolve(0.5)
+            extend " I'll be waiting for you in your dreams."
+            $ renpy.music.set_volume(0, 0, "music")
+            e "wow, that's truly a VN line of all times"
+            $ renpy.music.set_volume(1, 0, "music")
+
+            e "but- who cares!! Please stay with me, Madoka!!"
+            
+            with Pause(1.0)
+            "The alarm is ringing."
+
+            e "Oh no. It's actually happening, isn't it?"
+
+            show solid_white
+            with { "master": Dissolve(5.0) }
+            stop music fadeout 5.0
+            m "{cps=20}Don't worry.{w=0.5}{cps=10} I'll always be with you...{w=0.5} {cps=80}or smth idk this is just another cheesy VN line so yeah       . . . . . . . . . . . . . . . . . . .{nw}"
+
+            # "{cps=20}Your mind goes blank..."
+            jump happy_ending
 
 label ending(ending=""):
     stop music fadeout 1.5
@@ -418,8 +505,92 @@ label ending(ending=""):
     hide madoka
     hide phone
 
-    n "{cps=20}Your mind goes blank..."
+    "{cps=20}Your mind goes blank..."
 
     play sound snd_break1
-    n "{cps=20}[ending] Ending.{w}{cps=60}\nGo back a few options to try again..."
-    ender "[ending] Ending.\nGo back a few options to try again... {size=-10}(scroll up){fast}"
+    "{cps=20}[ending] Ending.{w}{cps=60}\nGo back a few options to try again..."
+    Character("", advance=False) "[ending] Ending.\nGo back a few options to try again... {size=-10}(scroll up){fast}"
+    jump final
+
+label happy_ending:
+    ending_narrator "{w=1.0}{nw}"
+    hide madoka
+    with None
+
+    hide solid_white
+    show bg room
+    # with { "master": Dissolve(1.0) }
+    # $ renpy.music.set_volume(1.0)
+    play music "audio/birds_are_singing.mp3"
+    ending_narrator "{w=1.0}{nw}"
+
+    
+    ending_narrator """
+    You're laying on your desk.
+
+    The sun is already shining into your room.
+    
+    {cps=3}...{/cps  }
+
+    Madoka stayed in your dreams.
+
+    But another great days starts!
+
+    And you feel like {size=-10}FECES{/size}.{w=.5}\nYou slept 5 hours again.
+    """
+
+    nvl clear
+
+    ending_narrator "{nw}"
+
+    ending_narrator """
+    Still...
+
+    You have a positive feeling.
+
+    That from now on, Madoka will visit you every night.
+
+    And for just a bit... you'll see her again.
+
+    Not in your drawings...{w=1.0}\nBut in your dreams.
+
+    ...
+
+    And Hopefully...
+    """
+
+    nvl clear
+    show bg sakura
+    ending_narrator "{nw}"
+    ending_narrator "{nw}"
+    ending_narrator "{nw}"
+
+    stop music
+    show madoka maid happy:
+        zoom 0.4
+        ycenter 1.2
+        easein_back 0.4 ycenter 0.75
+    show madoka maid curious as madoka1:
+        zoom 0.4
+        xcenter 0.8
+        ycenter 1.2
+        easein_back 0.6 ycenter 0.75
+    show madoka maid floor as madoka2:
+        zoom 0.4
+        xcenter 0.4
+        ycenter 1.2
+        easein_back 0.7 ycenter 0.75
+    
+    ending_narrator "{color=#000}That will make you actually want to sleep"
+
+label final:
+    play sound "audio/party_horn.mp3"
+    show madoka maid happy:
+        easein_back 0.4 zoom 0.5
+    show madoka maid curious as madoka1:
+        easein_back 0.6 zoom 0.5
+    show madoka maid floor as madoka2:
+        easein_back 0.7 zoom 0.5 ycenter 0.6
+
+    "Happy birthday, Egas-kun!"
+    with Fade(4.0, 0.0, 0.0)
