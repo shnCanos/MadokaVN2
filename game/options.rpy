@@ -38,7 +38,7 @@ A game made to celebrate the birthday of a certain, very dedicated Madoka Higuch
 ## distribution. This must be ASCII-only, and must not contain spaces, colons,
 ## or semicolons.
 
-define build.name = "MadokaVN2"
+define build.name = "Madoka no Yume"
 
 
 ## Sounds and music ############################################################
