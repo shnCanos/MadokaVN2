@@ -32,7 +32,7 @@ define e = Character("Egas KyUwUn", kind=base, who_color="#ff7700", callback=mes
 define p = Character("Peidro", kind=base, who_color="#9900ff", callback=message_beep,)
 define narrator = Character("", kind=base)
 
-define ending_narrator = Character("", kind=base_nvl, what_prefix="{color=#fff}", ctc_position = "fixed", ctc_timedpause = Null(), ctc = "gui/next.png")
+define ending_narrator = Character("", kind=base_nvl, what_prefix="{color=#fff}")
 
 ### Audios
 define audio.discord_ping = "audio/discord.mp3"
@@ -516,7 +516,7 @@ label jpop:
     "The alarm is ringing."
 
     e "Oh no. It's actually happening, isn't it?"
-    with Pause(1.0)
+    $ renpy.pause(1.0)
 
     show solid_white
     with { "master": Dissolve(5.0) }
@@ -622,7 +622,8 @@ label happy_ending:
         ycenter 1.2
         easein_back 0.7 ycenter 0.75
     
-    ending_narrator "{color=#000}{b}That{/b}{w=.5} will make you actually want to sleep!"
+    ending_narrator "{color=#000}{b}That{/b}{w=.5} will make you\nactually want to sleep!"
+    "Ending of your Dreams\n{w=.5}Also known in the streets as...{w=.5} Good Ending."
 
     play sound "audio/party_horn.mp3"
     show madoka maid happy:
@@ -633,8 +634,6 @@ label happy_ending:
         easein_back 0.7 zoom 0.5 ycenter 0.6
     "Happy birthday, Egas-kun!"
     with Fade(4.0, 0.0, 0.0)
-
-    "Ending of your Dreams\n{w=.5}Also known in the streets as...{w=.5} Good Ending.\nCongratulations!"
 
 label final:
     pass
